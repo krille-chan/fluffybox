@@ -1,5 +1,5 @@
-## 0.2.0
-- Bump dependencies and code clean up
+## 0.6.0
+- Switch back to sqflite for native
 
 ## 0.1.7
 - fix: Do use sqflite batches instead of transactions
