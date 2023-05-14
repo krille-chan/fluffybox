@@ -134,9 +134,14 @@ class Box<V> {
     final executor = txn ?? boxCollection._db;
 
     final result = await executor.query(name);
-    return Map.fromEntries(result
-        .map((row) => MapEntry(row['k'] as String, _fromString(row['v'])))
-        .whereType<MapEntry<String, V>>());
+    return Map.fromEntries(
+      result.map(
+        (row) => MapEntry(
+          row['k'] as String,
+          _fromString(row['v']) as V,
+        ),
+      ),
+    );
   }
 
   Future<V?> get(String key, [Transaction? txn]) async {

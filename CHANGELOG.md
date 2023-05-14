@@ -1,3 +1,6 @@
+## 0.7.1
+- fix: Return type again
+
 ## 0.7.0
 - Return non-nullable values for getAllValues
 
