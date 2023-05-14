@@ -1,0 +1,13 @@
+include:
+  - project: 'famedly/company/frontend/ci-templates'
+    ref: main
+    file: '/all.yml'
+
+unit_tests:
+  image: dart
+  stage: test
+  needs: []
+  script:
+    - apt update && apt install libsqlite3-0 libsqlite3-dev -y
+    - dart pub get
+    - dart test
