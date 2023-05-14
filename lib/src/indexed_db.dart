@@ -75,13 +75,13 @@ class Box<V> {
     return keys;
   }
 
-  Future<Map<String, V?>> getAllValues([Transaction? txn]) async {
+  Future<Map<String, V>> getAllValues([Transaction? txn]) async {
     txn ??= boxCollection._db.transaction(name, 'readonly');
     final store = txn.objectStore(name);
-    final map = <String, V?>{};
+    final map = <String, V>{};
     final cursorStream = store.openCursor(autoAdvance: true);
     await for (final cursor in cursorStream) {
-      map[cursor.key as String] = cursor.value as V?;
+      map[cursor.key as String] = cursor.value as V;
     }
     return map;
   }
