@@ -1,3 +1,6 @@
+## 0.6.1
+- fix: Return type for getAllValues
+
 ## 0.6.0
 - Switch back to sqflite for native
 
