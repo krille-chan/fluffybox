@@ -130,12 +130,12 @@ class Box<V> {
     return keys;
   }
 
-  Future<Map<String, V>> getAllValues([Transaction? txn]) async {
+  Future<Map<String, V?>> getAllValues([Transaction? txn]) async {
     final executor = txn ?? boxCollection._db;
 
     final result = await executor.query(name);
     return Map.fromEntries(result
-        .map((row) => MapEntry(row['k'] as String, _fromString(row['v'])!)));
+        .map((row) => MapEntry(row['k'] as String, _fromString(row['v']))));
   }
 
   Future<V?> get(String key, [Transaction? txn]) async {

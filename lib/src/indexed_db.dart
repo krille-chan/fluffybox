@@ -13,14 +13,14 @@ class BoxCollection {
     int version = 1,
     Object? sqfliteDatabase,
   }) async {
-    final _db = await window.indexedDB!.open(name, version: 1,
+    final db = await window.indexedDB!.open(name, version: 1,
         onUpgradeNeeded: (VersionChangeEvent event) {
-      final _db = event.target.result;
+      final db = event.target.result;
       for (final name in boxNames) {
-        _db.createObjectStore(name, autoIncrement: true);
+        db.createObjectStore(name, autoIncrement: true);
       }
     });
-    return BoxCollection(_db, boxNames);
+    return BoxCollection(db, boxNames);
   }
 
   Box<V> openBox<V>(String name) {
