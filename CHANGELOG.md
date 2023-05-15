@@ -1,3 +1,6 @@
+## 0.7.2
+- fix: Add missing null check
+
 ## 0.7.1
 - fix: Return type again
 

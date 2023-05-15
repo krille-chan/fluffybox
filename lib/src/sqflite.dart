@@ -135,12 +135,12 @@ class Box<V> {
 
     final result = await executor.query(name);
     return Map.fromEntries(
-      result.map(
-        (row) => MapEntry(
-          row['k'] as String,
-          _fromString(row['v']) as V,
-        ),
-      ),
+      result.where((row) => row['v'] != null).map(
+            (row) => MapEntry(
+              row['k'] as String,
+              _fromString(row['v']) as V,
+            ),
+          ),
     );
   }
 
